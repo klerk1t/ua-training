@@ -4,9 +4,10 @@ import org.junit.*;
 public class TestClass {
 
     private static Model model;
-    private static int lowerBound = 0;
-    private static int upperBound = 100;
+    private static int lowerBound = 1;
+    private static int upperBound = 99;
     private static int number = 47;
+    private static int iterations = 1000;
 
     @BeforeClass
     public static void executeTest() {
@@ -20,18 +21,56 @@ public class TestClass {
     }
 
     @Test
-    public void processUperNumberTest() {
+    public void processUpperNumberTest() {
         Assert.assertEquals(1, model.process(50));
     }
 
-    @AfterClass
-    public static void upperBoudTest() {
-        Assert.assertNotEquals(upperBound, model.getUpperBound());
+    @Test
+    public void lowerBoundRandTest() {
+        boolean key = false;
+        for(int i = 0; i < iterations; i++) {
+            if(model.rand(1, 100) == 1) {
+                key = true;
+                break;
+            }
+        }
+        Assert.assertTrue(key);
     }
 
-    @AfterClass
-    public static void lowerBoundTest() {
-        Assert.assertNotEquals(lowerBound, model.getLowerBound());
+    @Test
+    public void upperBoundRandTest() {
+        boolean key = false;
+        for(int i = 0; i < iterations; i++) {
+            if(model.rand(1, 100) == 99) {
+                key = true;
+                break;
+            }
+        }
+        Assert.assertTrue(key);
+    }
+
+    @Test
+    public void outOfUpperRange() {
+        boolean key = false;
+        for(int i = 0; i < iterations; i++) {
+            if(model.rand(1, 100) > 99) {
+                key = true;
+                break;
+            }
+        }
+        Assert.assertFalse(key);
+    }
+
+    @Test
+    public void outOfLowerRange() {
+        boolean key = false;
+        for(int i = 0; i < iterations; i++) {
+            if(model.rand(1, 100) < 1) {
+                key = true;
+                break;
+            }
+        }
+        Assert.assertFalse(key);
     }
 
     @AfterClass

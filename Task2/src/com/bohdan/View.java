@@ -14,7 +14,7 @@ public class View {
     public static final String GREETINGS = "Hi! In this game you must guess" +
             " a number";
     public static final String INPUT_NUMBER = "Input number";
-    public static  final String RANGE = " in range from ";
+    public static final String RANGE = " in range from ";
     public static final String WRONG_INPUT = "Wrong input try again";
     public static final String WRONG_RANGE = "Wrong range";
     public static final String TO = " to ";
@@ -25,6 +25,7 @@ public class View {
     public static final String NUMBER_OF_INPUT = "You guessed the number with ";
     public static final String ATTEMPTS = " attempts.";
     public static final String LIST_OF_NUMBERS = "These numbers you entered during the game:";
+    public static final String SECRET_NUMBER = " Secret number is: ";
 
     public void printMessageInNewLine(String message) {
         System.out.println(message);

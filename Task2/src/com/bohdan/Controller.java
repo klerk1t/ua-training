@@ -40,7 +40,7 @@ public class Controller {
             if(temp == 1) view.printMessageInNewLine(View.HINT_LESS);
             else if (temp == 2) view.printMessageInNewLine(View.HINT_GREATER);
             else {
-                view.printMessageInNewLine(View.GAME_END);
+                view.printMessageInNewLine(View.GAME_END + View.SECRET_NUMBER + model.getNumber());
                 view.printMessageInNewLine(View.STATISTICS_MESSAGE);
                 view.printMessageInNewLine(View.NUMBER_OF_INPUT + model.getCount()
                         + View.ATTEMPTS);
@@ -66,7 +66,7 @@ public class Controller {
             } else {
                 if(!rangeVerify(temp = sc.nextInt())) {
                     view.printMessageInNewLine(View.WRONG_RANGE);
-                    view.printMessageInNewLine(View.INPUT_NUMBER + model.getLowerBound()
+                    view.printMessageInNewLine(View.INPUT_NUMBER + View.RANGE + model.getLowerBound()
                             + View.TO + model.getUpperBound());
                 } else return temp;
             }
@@ -81,6 +81,6 @@ public class Controller {
      * @return true if number in range else false
      */
     private boolean rangeVerify(int i){
-        return i >= model.getLowerBound() && i <= model.getUpperBound();
+        return i >= (model.getLowerBound() + 1) && i <= (model.getUpperBound() - 1);
     }
 }

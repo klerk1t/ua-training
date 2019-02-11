@@ -28,15 +28,6 @@ public class Model {
     /** Upper bound range */
     private int upperBound;
 
-    /**
-     * Initialization a new model object with default parameters
-     */
-    public Model() {
-        number = rand();
-        upperBound = RAND_MAX;
-        lowerBound = 0;
-        listOfNumbers = new LinkedList<>();
-    }
 
     /**
      * Initialization a new model object with bounds for a random number
@@ -65,9 +56,9 @@ public class Model {
             return c;
         }
         else if(c == 1) {
-            upperBound = --i;
+            upperBound = i;
         }
-        else lowerBound = ++i;
+        else lowerBound = i;
         return c;
     }
 
@@ -76,7 +67,7 @@ public class Model {
      *
      * @param i number that verify
      *
-     * @return  If i greater then number return 1. If i less than number return 0.
+     * @return  If i greater then number return 1. If i less than number return 2.
      *          If i equals number return 0.
      */
     private int verifyNumber(int i) {
@@ -94,19 +85,10 @@ public class Model {
      *
      * @return  Random number.
      */
-    private int rand(int to, int from) {
+    public int rand(int to, int from) {
         int temp;
         if((temp = from) > RAND_MAX) temp = RAND_MAX;
-        return (int)(Math.random() * (temp - to + 1) + to);
-    }
-
-    /**
-     * Generation of random number with default bounds.
-     *
-     * @return  Random number.
-     */
-    private int rand() {
-        return (int)(Math.random() * RAND_MAX);
+        return (int)(Math.random() *(temp - to)) + to;
     }
 
     public void setNumber(int number) {
