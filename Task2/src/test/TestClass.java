@@ -5,7 +5,7 @@ public class TestClass {
 
     private static Model model;
     private static int lowerBound = 1;
-    private static int upperBound = 99;
+    private static int upperBound = 3;
     private static int number = 47;
     private static int iterations = 1000;
 
@@ -29,7 +29,7 @@ public class TestClass {
     public void lowerBoundRandTest() {
         boolean key = false;
         for(int i = 0; i < iterations; i++) {
-            if(model.rand(1, 100) == 1) {
+            if(model.rand(lowerBound, upperBound) == (lowerBound + 1)) {
                 key = true;
                 break;
             }
@@ -41,7 +41,7 @@ public class TestClass {
     public void upperBoundRandTest() {
         boolean key = false;
         for(int i = 0; i < iterations; i++) {
-            if(model.rand(1, 100) == 99) {
+            if(model.rand(lowerBound, upperBound) == (upperBound - 1)) {
                 key = true;
                 break;
             }
@@ -53,7 +53,7 @@ public class TestClass {
     public void outOfUpperRange() {
         boolean key = false;
         for(int i = 0; i < iterations; i++) {
-            if(model.rand(1, 100) > 99) {
+            if(model.rand(lowerBound, upperBound) >= upperBound) {
                 key = true;
                 break;
             }
@@ -65,7 +65,7 @@ public class TestClass {
     public void outOfLowerRange() {
         boolean key = false;
         for(int i = 0; i < iterations; i++) {
-            if(model.rand(1, 100) < 1) {
+            if(model.rand(lowerBound, upperBound) <= lowerBound) {
                 key = true;
                 break;
             }

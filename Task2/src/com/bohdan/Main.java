@@ -3,7 +3,7 @@ package com.bohdan;
 /**
  * Main class
  *
- * @version 1.0 09 Feb 2019
+ * @version 1.2 13 Feb 2019
  * @author Bohdan Ovchar
  */
 public class Main {

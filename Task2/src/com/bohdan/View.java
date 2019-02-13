@@ -5,12 +5,14 @@ import java.util.List;
 /**
  * View class
  *
- * @version 1.0 09 Feb 2019
  * @author Bohdan Ovchar
+ * @version 1.2 13 Feb 2019
  */
 public class View {
 
-    /** Сonstants */
+    /**
+     * Сonstants
+     */
     public static final String GREETINGS = "Hi! In this game you must guess" +
             " a number";
     public static final String INPUT_NUMBER = "Input number";
@@ -26,6 +28,14 @@ public class View {
     public static final String ATTEMPTS = " attempts.";
     public static final String LIST_OF_NUMBERS = "These numbers you entered during the game:";
     public static final String SECRET_NUMBER = " Secret number is: ";
+    public static final String CHANGE_RANGE = "Dou you want change range?" +
+            " Please input \"Y\" if you want do it else input \"N\"";
+    public static final String INPUT_BOUNDS = "Input your bounds";
+    public static final String INCORRECT_RANGE_VALUE = "Incorect input range, please try again." +
+            "\n Minimum input number is: " + Model.getRandMin() +
+            "\n Maximum input number is: " + Model.getRandMax();
+    public static final String INCORRECT_RANGE_INPUT = "Your lower bound equals upper bound or " +
+            "their difference is less than two";
 
     public void printMessageInNewLine(String message) {
         System.out.println(message);

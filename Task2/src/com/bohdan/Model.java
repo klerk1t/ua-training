@@ -6,12 +6,15 @@ import java.util.List;
 /**
  * Model class
  *
- * @version 1.0 09 Feb 2019
+ * @version 1.2 13 Feb 2019
  * @author Bohdan Ovchar
  */
 public class Model {
     /** Max allowable number */
     private static final int RAND_MAX = Integer.MAX_VALUE / 2;
+
+    /** Min allowable number */
+    private static final int RAND_MIN = Integer.MIN_VALUE / 2;
 
     /** Number the need guess */
     private int number;
@@ -31,19 +34,18 @@ public class Model {
 
     /**
      * Initialization a new model object with bounds for a random number
-     * @param lowerBound
-     *        Lower bound of range
-     * @param upperBound
-     *        Upper bound of range
+     *
+     * @param lowerBound Lower bound of range
+     * @param upperBound Upper bound of range
      */
     public Model(int lowerBound, int upperBound) {
         this.lowerBound = lowerBound;
         this.upperBound = upperBound;
-        number = rand(lowerBound, upperBound);
         listOfNumbers = new LinkedList<>();
     }
 
     /**
+     * Business logic
      *
      * @param i
      * @return
@@ -86,13 +88,32 @@ public class Model {
      * @return  Random number.
      */
     public int rand(int to, int from) {
-        int temp;
-        if((temp = from) > RAND_MAX) temp = RAND_MAX;
-        return (int)(Math.random() *(temp - to)) + to;
+        int tempUpper;
+        int tempLower;
+        int rand;
+        if((tempUpper = from) > RAND_MAX) tempUpper = RAND_MAX;
+        if((tempLower = to) < RAND_MIN) tempLower = RAND_MIN;
+        return (rand = (int)(Math.random() *(tempUpper - tempLower)) + tempLower) == tempLower ?
+                ++rand : rand;
+    }
+
+    /**
+     * Generation of random number with bounds
+     */
+    public void createNumber() {
+        number = rand(lowerBound, upperBound);
     }
 
     public void setNumber(int number) {
         this.number = number;
+    }
+
+    public void setLowerBound(int lowerBound) {
+        this.lowerBound = lowerBound;
+    }
+
+    public void setUpperBound(int upperBound) {
+        this.upperBound = upperBound;
     }
 
     public int getNumber() {
@@ -113,5 +134,13 @@ public class Model {
 
     public List<Integer> getListOfNumbers() {
         return listOfNumbers;
+    }
+
+    public static int getRandMax() {
+        return RAND_MAX;
+    }
+
+    public static int getRandMin() {
+        return RAND_MIN;
     }
 }
