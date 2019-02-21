@@ -34,8 +34,13 @@ public class UtilityController {
                 validator.checking(LAST_NAME_DATA, systemRegex.getRegexBundle().getString(REGEX_LAST_NAME))
         );
 
+        inputNickname();
+
+    }
+
+    public void inputNickname() {
         inputRecord.setNickname(
-                validator.checking(NICKNAME_DATA, systemRegex.getRegexBundle().getString(NICKNAME_DATA))
+                validator.checking(NICKNAME_DATA, systemRegex.getRegexBundle().getString(REGEX_NICKNAME_DATA))
         );
     }
 

@@ -27,11 +27,21 @@ public class Controller {
         UtilityController utilityController = new UtilityController(scanner, view, inputRecord, systemRegex);
         utilityController.inputToRecord();
 
+        modelDataTransfer(inputRecord);
+    }
+
+    private void modelDataTransfer(InputRecord inputRecord) {
         try {
             model.addRecord(inputRecord);
         } catch(NonUniquenessNicknameException e) {
             e.printStackTrace();
-        }
+            inputRecord = new InputRecord();
+            inputRecord.setFirstName(e.getFirstName());
+            inputRecord.setLastName(e.getLastName());
+            UtilityController utilityController = new UtilityController(scanner, view, inputRecord, systemRegex);
 
+            utilityController.inputNickname();
+            modelDataTransfer(inputRecord);
+        }
     }
 }
