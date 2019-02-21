@@ -3,8 +3,8 @@ package com.bohdan.view;
 import com.bohdan.controller.SystemLanguage;
 import java.util.Locale;
 
-import static com.bohdan.view.Constans.INPUT_DATA;
-import static com.bohdan.view.Constans.WRONG_INPUT_DATA;
+import static com.bohdan.view.TextConstans.INPUT_DATA;
+import static com.bohdan.view.TextConstans.WRONG_INPUT_DATA;
 
 public class View {
 

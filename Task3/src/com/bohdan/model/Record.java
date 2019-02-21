@@ -2,32 +2,21 @@ package com.bohdan.model;
 
 import java.util.Date;
 
-public class Record {
+class Record {
 
     private String firstName;
     private String lastName;
     private String initials;
     private String nickname;
-    private Date createRecord;
+    private Date createRecordDate;
 
-    public void setFirstName(String firstName) {
+    Record(String firstName, String lastName, String initials,
+           String nickname, Date createRecordDate) {
         this.firstName = firstName;
-    }
-
-    public void setLastName(String lastName) {
         this.lastName = lastName;
-    }
-
-    public void setInitials(String initials) {
         this.initials = initials;
-    }
-
-    public void setNickname(String nickname) {
         this.nickname = nickname;
-    }
-
-    public void setCreateRecord(Date createRecord) {
-        this.createRecord = createRecord;
+        this.createRecordDate = createRecordDate;
     }
 
     public String getFirstName() {
@@ -46,8 +35,8 @@ public class Record {
         return nickname;
     }
 
-    public Date getCreateRecord() {
-        return createRecord;
+    public Date getCreateRecordDate() {
+        return createRecordDate;
     }
 
 }
